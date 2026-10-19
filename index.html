@@ -1,474 +1,1175 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Portfolio of Judarna Khoirunnisa Anjalina, Backend Developer specializing in Go, RESTful APIs, Python, and database systems.">
+    <meta name="theme-color" content="#020617">
+
     <title>Judarna Khoirunnisa Anjalina | Backend Developer</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="stylesheet" href="./assets/css/style.css">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            background-color: #020617;
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.82);
+            backdrop-filter: blur(16px);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #60a5fa, #22d3ee);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-label {
+            color: #60a5fa;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .project-card,
+        .experience-card,
+        .skill-card,
+        .certificate-card {
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .project-card:hover,
+        .experience-card:hover,
+        .skill-card:hover,
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+        }
+
+        .profile-image {
+            object-position: center 35%;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 12px;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.025);
+        }
+
+        .certificate-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 12px;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .ambient-glow {
+            pointer-events: none;
+            filter: blur(100px);
+            opacity: 0.13;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
 
-<body class="bg-slate-950 text-white overflow-x-hidden">
+<body class="overflow-x-hidden text-white antialiased">
 
-<div class="fixed top-0 right-0 w-125 h-125 bg-blue-600/10 blur-[150px] rounded-full -z-10"></div>
+    <!-- Background -->
+    <div class="ambient-glow fixed -top-20 -right-20 z-0 h-96 w-96 rounded-full bg-blue-500"></div>
+    <div class="ambient-glow fixed bottom-0 -left-20 z-0 h-96 w-96 rounded-full bg-cyan-500"></div>
 
-<div class="fixed bottom-0 left-0 w-112.5 h-112.5 bg-cyan-500/10 blur-[140px] rounded-full -z-10"></div>
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 z-50 w-full">
+        <nav class="glass border-b border-slate-800">
+            <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
 
-    <header class="fixed top-0 left-0 w-full z-50">
-        <nav class="border-b border-slate-800 bg-slate-950/80 backdrop-blur">
-            <div class="max-w-7xl mx-auto flex items-center justify-between px-8 py-5">
-                <a href="#home" class="text-2xl font-bold text-blue-400 hover:text-blue-300 transition">
-                    &lt;/&gt; Judarna.
+                <a href="#home" class="text-xl font-extrabold text-blue-400 transition hover:text-cyan-300">
+                    &lt;/&gt; Judarna<span class="text-white">.</span>
                 </a>
 
-                <ul class="flex items-center gap-10 text-slate-300">
-                    <li><a href="#home" class="hover:text-blue-400 transition">Home</a></li>
-                    <li><a href="#about" class="hover:text-blue-400 transition">About</a></li>
-                    <li><a href="#experience" class="hover:text-blue-400 transition">Experience</a></li>
-                    <li><a href="#projects" class="hover:text-blue-400 transition">Projects</a></li>
-                    <li><a href="#certificates" class="hover:text-blue-400 transition">Certificates</a></li>
-                    <li><a href="#contact" class="hover:text-blue-400 transition">Contact</a></li>
+                <ul class="hidden items-center gap-6 text-sm text-slate-300 lg:flex">
+                    <li><a href="#home" class="transition hover:text-blue-400">Home</a></li>
+                    <li><a href="#about" class="transition hover:text-blue-400">About</a></li>
+                    <li><a href="#skills" class="transition hover:text-blue-400">Skills</a></li>
+                    <li><a href="#experience" class="transition hover:text-blue-400">Experience</a></li>
+                    <li><a href="#projects" class="transition hover:text-blue-400">Projects</a></li>
+                    <li><a href="#certificates" class="transition hover:text-blue-400">Certificates</a></li>
+                    <li><a href="#contact" class="transition hover:text-blue-400">Contact</a></li>
                 </ul>
 
-                <a href="assets/cv/CV_Judarna_Khoirunnisa.pdf" download
-                    class="bg-blue-500 hover:bg-blue-600 transition px-6 py-3 rounded-xl font-semibold">
+                <div class="hidden lg:block">
+                    <a href="assets/cv/Cv_Judarna Khoirunnisa.pdf"
+                       download
+                       class="rounded-xl bg-blue-500 px-5 py-3 text-sm font-semibold transition hover:bg-blue-600">
+                        Download CV
+                    </a>
+                </div>
+
+                <button id="menu-button"
+                        type="button"
+                        aria-label="Open navigation menu"
+                        aria-expanded="false"
+                        aria-controls="mobile-navigation"
+                        class="rounded-lg border border-slate-700 p-2 text-slate-200 lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round">
+                        <path d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="mobile-navigation"
+                 class="mobile-menu glass flex-col gap-1 border-t border-slate-800 px-6 py-4 lg:hidden">
+                <a href="#home" class="rounded-lg px-3 py-3 hover:bg-slate-800">Home</a>
+                <a href="#about" class="rounded-lg px-3 py-3 hover:bg-slate-800">About</a>
+                <a href="#skills" class="rounded-lg px-3 py-3 hover:bg-slate-800">Skills</a>
+                <a href="#experience" class="rounded-lg px-3 py-3 hover:bg-slate-800">Experience</a>
+                <a href="#projects" class="rounded-lg px-3 py-3 hover:bg-slate-800">Projects</a>
+                <a href="#certificates" class="rounded-lg px-3 py-3 hover:bg-slate-800">Certificates</a>
+                <a href="#contact" class="rounded-lg px-3 py-3 hover:bg-slate-800">Contact</a>
+                <a href="assets/cv/Cv_Judarna Khoirunnisa.pdf"
+                   download
+                   class="mt-2 rounded-xl bg-blue-500 px-4 py-3 text-center font-semibold">
                     Download CV
                 </a>
-
             </div>
         </nav>
     </header>
-    <section id="home" class="min-h-screen flex items-center pt-32">
-        <div class="max-w-7xl mx-auto px-8 w-full">
-            <div class="grid md:grid-cols-2 gap-20 items-center">
-                <div>
-                    <p class="text-blue-400 text-xl font-semibold mb-4">Hi, I'm 👋</p>
 
-                    <h1 class="text-6xl font-extrabold leading-tight mb-6">
-                        Judarna<br>
-                        Khoirunnisa<br>
-                        Anjalina
-                    </h1>
+    <main class="relative z-10">
 
-                    <h2 class="text-3xl text-slate-300 font-semibold mb-8">
-                        Backend Developer
-                    </h2>
+        <!-- Home -->
+        <section id="home" class="flex min-h-screen items-center pb-20 pt-32">
+            <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
+                <div class="grid items-center gap-16 lg:grid-cols-2 lg:gap-12">
 
-                    <div class="flex flex-wrap gap-3 mb-8">
-                        <span class="bg-slate-800 border border-slate-700 px-5 py-2 rounded-full hover:border-blue-500 transition">Go</span>
-                        <span class="bg-slate-800 border border-slate-700 px-5 py-2 rounded-full hover:border-blue-500 transition">REST API</span>
-                        <span class="bg-slate-800 border border-slate-700 px-5 py-2 rounded-full hover:border-blue-500 transition">Docker</span>
-                        <span class="bg-slate-800 border border-slate-700 px-5 py-2 rounded-full hover:border-blue-500 transition">Redis</span>
-                        <span class="bg-slate-800 border border-slate-700 px-5 py-2 rounded-full hover:border-blue-500 transition">PostgreSQL</span>
+                    <div>
+                        <p class="mb-5 text-lg font-semibold text-blue-400">
+                            Hello, I'm <span aria-hidden="true">👋</span>
+                        </p>
+
+                        <h1 class="mb-6 text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
+                            Judarna<br>
+                            Khoirunnisa<br>
+                            <span class="gradient-text">Anjalina</span>
+                        </h1>
+
+                        <h2 class="mb-6 text-2xl font-semibold text-slate-300 sm:text-3xl">
+                            Backend Developer
+                        </h2>
+
+                        <div class="mb-8 flex flex-wrap gap-2">
+                            <span class="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-sm text-blue-300">Go (Golang)</span>
+                            <span class="rounded-full border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-slate-300">RESTful APIs</span>
+                            <span class="rounded-full border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-slate-300">PostgreSQL</span>
+                            <span class="rounded-full border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-slate-300">Redis</span>
+                            <span class="rounded-full border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-slate-300">Docker</span>
+                        </div>
+
+                        <p class="max-w-xl text-base leading-8 text-slate-400 sm:text-lg">
+                            Informatics Management graduate with experience in backend development,
+                            RESTful API engineering, monitoring systems, and performance evaluation
+                            applications. Focused on building structured, efficient, and maintainable
+                            software solutions using Go and Python.
+                        </p>
+
+                        <div class="mt-9 flex flex-wrap gap-4">
+                            <a href="assets/cv/Cv_Judarna Khoirunnisa.pdf"
+                               download
+                               class="rounded-xl bg-blue-500 px-6 py-3 font-semibold transition hover:bg-blue-600">
+                                Download CV
+                            </a>
+
+                            <a href="#projects"
+                               class="rounded-xl border border-slate-700 px-6 py-3 font-semibold transition hover:border-blue-500 hover:text-blue-400">
+                                Explore Projects
+                            </a>
+                        </div>
+
+                        <div class="mt-12 grid grid-cols-3 gap-4 border-t border-slate-800 pt-8">
+                            <div>
+                                <h3 class="text-2xl font-extrabold text-blue-400 sm:text-3xl">3+</h3>
+                                <p class="mt-2 text-xs leading-5 text-slate-400 sm:text-sm">Internship Experiences</p>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-extrabold text-blue-400 sm:text-3xl">5+</h3>
+                                <p class="mt-2 text-xs leading-5 text-slate-400 sm:text-sm">Backend Projects</p>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-extrabold text-blue-400 sm:text-3xl">10+</h3>
+                                <p class="mt-2 text-xs leading-5 text-slate-400 sm:text-sm">Tools & Technologies</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <p class="text-slate-400 leading-8 text-lg max-w-xl">
-                        Fresh Graduate D4 Manajemen Informatika yang berfokus pada
-                        pengembangan Backend menggunakan Go (Golang). Berpengalaman
-                        membangun REST API, dashboard monitoring, serta sistem internal
-                        untuk mendukung operasional perbankan.
+                    <div class="flex justify-center py-8">
+                        <div class="relative">
+                            <div class="absolute inset-0 scale-90 rounded-full bg-blue-500 blur-3xl opacity-20"></div>
+
+                            <div class="relative h-64 w-64 overflow-hidden rounded-full border-4 border-blue-500/80 bg-slate-900 shadow-2xl shadow-blue-500/20 sm:h-80 sm:w-80 lg:h-96 lg:w-96">
+                                <img src="assets/images/profile/profile.png"
+                                     alt="Portrait of Judarna Khoirunnisa Anjalina"
+                                     class="profile-image h-full w-full object-cover"
+                                     fetchpriority="high">
+                            </div>
+
+                            <div class="glass absolute -bottom-6 left-1/2 w-max max-w-[90vw] -translate-x-1/2 rounded-2xl border border-slate-700 px-6 py-4 shadow-xl">
+                                <p class="text-sm text-blue-400">Backend Development</p>
+                                <h3 class="mt-1 font-bold">Backend Developer</h3>
+                                <p class="text-sm text-slate-400">Bank Sumsel Babel</p>
+                            </div>
+
+                            <div class="absolute -right-3 top-10 rounded-xl border border-slate-700 bg-slate-900 p-3 shadow-lg sm:-right-5">
+                                <span class="text-2xl" aria-hidden="true">⚙️</span>
+                            </div>
+
+                            <div class="absolute -left-3 bottom-20 rounded-xl border border-slate-700 bg-slate-900 p-3 shadow-lg sm:-left-5">
+                                <span class="text-2xl" aria-hidden="true">💻</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="py-24 sm:py-32">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+                <div class="mb-16 text-center sm:mb-20">
+                    <p class="section-label mb-3">About Me</p>
+                    <h2 class="text-3xl font-bold sm:text-5xl">Get to Know Me</h2>
+                    <p class="mx-auto mt-5 max-w-2xl leading-7 text-slate-400">
+                        My background, professional experience, and areas of interest in software development.
                     </p>
-
-                    <div class="flex gap-4 mt-10">
-                        <a href="assets/cv/CV_Judarna_Khoirunnisa.pdf" download class="bg-blue-500 hover:bg-blue-600 transition px-6 py-3 rounded-xl font-semibold">
-                            Download CV
-                        </a>
-                        <!-- <a href="#" class="border border-slate-700 hover:border-blue-500 hover:text-blue-400 transition px-6 py-3 rounded-xl">
-                            GitHub
-                        </a>
-                        <a href="#" class="border border-slate-700 hover:border-blue-500 hover:text-blue-400 transition px-6 py-3 rounded-xl">
-                            LinkedIn
-                        </a> -->
-                    </div>
-
-                    <div class="grid grid-cols-3 gap-8 mt-12">
-                        <div>
-                            <h2 class="text-3xl font-bold text-blue-400">3+</h2>
-                            <p class="text-slate-400">Pengalaman Magang</p>
-                        </div>
-                        <div>
-                            <h2 class="text-3xl font-bold text-blue-400">5+</h2>
-                            <p class="text-slate-400">Project Backend</p>
-                        </div>
-                        <div>
-                            <h2 class="text-3xl font-bold text-blue-400">10+</h2>
-                            <p class="text-slate-400">Tools & Teknologi</p>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="flex justify-center">
-                    <div class="relative">
+                <div class="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+                    <div>
+                        <h3 class="text-2xl font-bold leading-snug sm:text-3xl">
+                            Building reliable backend applications through
+                            <span class="text-blue-400">clean and structured code.</span>
+                        </h3>
 
-                        <div class="absolute inset-0 bg-blue-500 blur-3xl opacity-20 rounded-full"></div>
+                        <p class="mt-7 leading-8 text-slate-400">
+                            I hold a Diploma IV degree in Informatics Management from
+                            Politeknik Negeri Sriwijaya. My experience includes developing
+                            RESTful APIs, back-office applications, monitoring systems,
+                            and employee performance evaluation solutions in the banking sector.
+                        </p>
 
-                        <div class="relative w-96 h-96 rounded-full border-4 border-blue-500 overflow-hidden bg-slate-900">
-                            <img src="assets/images/profile/profile.png" alt="Judarna" class="w-full h-full object-cover">
-                        </div>
+                        <p class="mt-5 leading-8 text-slate-400">
+                            I work with Go and Python and have experience with database management,
+                            API testing, access control, background processing, and file storage
+                            integration. I enjoy analyzing technical problems and developing
+                            solutions that are efficient, maintainable, and aligned with business needs.
+                        </p>
 
-                        <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-slate-900 border border-slate-700 rounded-2xl px-6 py-4 shadow-xl">
-                            <p class="text-blue-400 text-sm">2025 - Sekarang</p>
-                            <h3 class="font-bold mt-2">Backend Developer</h3>
-                            <p class="text-slate-400 text-sm">Bank Sumsel Babel</p>
+                        <div class="mt-8 flex flex-wrap gap-3">
+                            <span class="rounded-lg border border-slate-800 bg-slate-900 px-4 py-2 text-sm text-slate-300">Problem Solving</span>
+                            <span class="rounded-lg border border-slate-800 bg-slate-900 px-4 py-2 text-sm text-slate-300">API Development</span>
+                            <span class="rounded-lg border border-slate-800 bg-slate-900 px-4 py-2 text-sm text-slate-300">Database Design</span>
                         </div>
                     </div>
+
+                    <div class="grid gap-5">
+
+                        <div class="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 sm:p-8">
+                            <div class="flex items-start gap-4">
+                                <div class="rounded-xl bg-blue-500/10 p-3 text-2xl" aria-hidden="true">🎓</div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-blue-400">Education</h3>
+                                    <p class="mt-3 font-medium text-slate-200">Diploma IV in Informatics Management</p>
+                                    <p class="mt-1 text-sm text-slate-400">Politeknik Negeri Sriwijaya</p>
+                                    <p class="mt-2 text-sm text-slate-500">2020–2024 · GPA: 3.70/4.00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 sm:p-8">
+                            <div class="flex items-start gap-4">
+                                <div class="rounded-xl bg-blue-500/10 p-3 text-2xl" aria-hidden="true">💼</div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-blue-400">Experience</h3>
+                                    <p class="mt-3 text-slate-300">Bank Sumsel Babel</p>
+                                    <p class="mt-1 text-slate-300">PT Ruang Raya Indonesia</p>
+                                    <p class="mt-1 text-slate-300">Perumda Tirta Musi Palembang</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 sm:p-8">
+                            <div class="flex items-start gap-4">
+                                <div class="rounded-xl bg-blue-500/10 p-3 text-2xl" aria-hidden="true">⚡</div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-blue-400">Core Focus</h3>
+                                    <p class="mt-3 text-slate-300">Backend Engineering</p>
+                                    <p class="mt-1 text-slate-300">RESTful API Development</p>
+                                    <p class="mt-1 text-slate-300">Database & System Integration</p>
+                                    <p class="mt-1 text-slate-300">Data Analysis</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="about" class="py-32">
-        <div class="max-w-7xl mx-auto px-8">
+        <!-- Skills -->
+        <section id="skills" class="border-y border-slate-900 bg-slate-900/30 py-24 sm:py-32">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
 
-            <div class="text-center mb-20">
-                <p class="text-blue-400 font-semibold mb-3">About Me</p>
-                <h2 class="text-5xl font-bold">Mengenal Saya</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div>
-                    <h3 class="text-3xl font-bold leading-snug">
-                        Backend Developer yang berfokus pada
-                        pengembangan aplikasi menggunakan
-                        Go (Golang).
-                    </h3>
-
-                    <p class="text-slate-400 mt-8 leading-8">
-                        Saya merupakan lulusan D4 Manajemen Informatika
-                        Politeknik Negeri Sriwijaya.
-                        Memiliki pengalaman dalam mengembangkan
-                        REST API, dashboard monitoring,
-                        sistem penilaian kinerja,
-                        serta aplikasi operasional
-                        di lingkungan perbankan.
+                <div class="mb-16 text-center sm:mb-20">
+                    <p class="section-label mb-3">Technical Skills</p>
+                    <h2 class="text-3xl font-bold sm:text-5xl">Technologies I Work With</h2>
+                    <p class="mx-auto mt-6 max-w-2xl leading-7 text-slate-400">
+                        Languages, frameworks, databases, and tools I have used throughout my
+                        backend development experience.
                     </p>
                 </div>
-                <div class="grid gap-6">
 
-                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
-                        <h3 class="text-blue-400 font-bold text-xl">🎓 Pendidikan</h3>
-                        <p class="mt-4 text-slate-300">D4 Manajemen Informatika</p>
-                        <p class="text-slate-500">Politeknik Negeri Sriwijaya</p>
+                <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+
+                    <div class="skill-card rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
+                        <div class="mb-5 text-4xl" aria-hidden="true">🐹</div>
+                        <h3 class="text-xl font-bold">Go (Golang)</h3>
+                        <p class="mt-4 text-sm leading-7 text-slate-400">
+                            Backend services, RESTful APIs, request validation, middleware, and business logic.
+                        </p>
                     </div>
 
-                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
-                        <h3 class="text-blue-400 font-bold text-xl">💼 Pengalaman</h3>
-                        <p class="mt-4 text-slate-300">MSIB Ruangguru</p>
-                        <p class="text-slate-300">Perumda Tirta Musi</p>
-                        <p class="text-slate-300">Bank Sumsel Babel</p>
+                    <div class="skill-card rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
+                        <div class="mb-5 text-4xl" aria-hidden="true">🐍</div>
+                        <h3 class="text-xl font-bold">Python</h3>
+                        <p class="mt-4 text-sm leading-7 text-slate-400">
+                            Monitoring applications, helpdesk data retrieval, and data processing workflows.
+                        </p>
                     </div>
 
-                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8">
-                        <h3 class="text-blue-400 font-bold text-xl">⚡ Fokus</h3>
-                        <p class="mt-4 text-slate-300">Backend Development</p>
-                        <p class="text-slate-300">REST API</p>
-                        <p class="text-slate-300">Go (Golang)</p>
+                    <div class="skill-card rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
+                        <div class="mb-5 text-4xl" aria-hidden="true">🗄️</div>
+                        <h3 class="text-xl font-bold">PostgreSQL</h3>
+                        <p class="mt-4 text-sm leading-7 text-slate-400">
+                            Relational database design, SQL queries, data relationships, and persistence.
+                        </p>
+                    </div>
+
+                    <div class="skill-card rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
+                        <div class="mb-5 text-4xl" aria-hidden="true">⚡</div>
+                        <h3 class="text-xl font-bold">Redis</h3>
+                        <p class="mt-4 text-sm leading-7 text-slate-400">
+                            In-memory data operations and integration with backend applications.
+                        </p>
+                    </div>
+
+                    <div class="skill-card rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
+                        <div class="mb-5 text-4xl" aria-hidden="true">🐳</div>
+                        <h3 class="text-xl font-bold">Docker</h3>
+                        <p class="mt-4 text-sm leading-7 text-slate-400">
+                            Containerization and support for consistent application development environments.
+                        </p>
+                    </div>
+
+                    <div class="skill-card rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
+                        <div class="mb-5 text-4xl" aria-hidden="true">📦</div>
+                        <h3 class="text-xl font-bold">MinIO</h3>
+                        <p class="mt-4 text-sm leading-7 text-slate-400">
+                            Object storage integration for files, documents, and application assets.
+                        </p>
+                    </div>
+
+                    <div class="skill-card rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
+                        <div class="mb-5 text-4xl" aria-hidden="true">🔄</div>
+                        <h3 class="text-xl font-bold">Celery</h3>
+                        <p class="mt-4 text-sm leading-7 text-slate-400">
+                            Asynchronous task processing for Python-based data workflows.
+                        </p>
+                    </div>
+
+                    <div class="skill-card rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
+                        <div class="mb-5 text-4xl" aria-hidden="true">🧪</div>
+                        <h3 class="text-xl font-bold">Postman</h3>
+                        <p class="mt-4 text-sm leading-7 text-slate-400">
+                            REST API testing, request validation, and endpoint verification.
+                        </p>
+                    </div>
+
+                    <div class="skill-card rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
+                        <div class="mb-5 text-4xl" aria-hidden="true">🌐</div>
+                        <h3 class="text-xl font-bold">Echo</h3>
+                        <p class="mt-4 text-sm leading-7 text-slate-400">
+                            Go web framework for routing, middleware, and HTTP API development.
+                        </p>
+                    </div>
+
+                    <div class="skill-card rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
+                        <div class="mb-5 text-4xl" aria-hidden="true">🐘</div>
+                        <h3 class="text-xl font-bold">Laravel & PHP</h3>
+                        <p class="mt-4 text-sm leading-7 text-slate-400">
+                            Web application development, including an electronic archive system.
+                        </p>
+                    </div>
+
+                    <div class="skill-card rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
+                        <div class="mb-5 text-4xl" aria-hidden="true">🛠️</div>
+                        <h3 class="text-xl font-bold">DBeaver & SQL</h3>
+                        <p class="mt-4 text-sm leading-7 text-slate-400">
+                            Database inspection, query execution, and relational data management.
+                        </p>
+                    </div>
+
+                    <div class="skill-card rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
+                        <div class="mb-5 text-4xl" aria-hidden="true">🔧</div>
+                        <h3 class="text-xl font-bold">Git & Debugging</h3>
+                        <p class="mt-4 text-sm leading-7 text-slate-400">
+                            Version control, troubleshooting, error handling, and API verification.
+                        </p>
                     </div>
 
                 </div>
-
             </div>
+        </section>
 
-        </div>
-    </section>
-    <section id="skills" class="py-32">
-        <div class="max-w-7xl mx-auto px-8">
+        <!-- Experience -->
+        <section id="experience" class="py-24 sm:py-32">
+            <div class="mx-auto max-w-6xl px-6 lg:px-8">
 
-            <div class="text-center mb-20">
-                <p class="text-blue-400 font-semibold mb-3">Tech Stack</p>
-                <h2 class="text-5xl font-bold">Teknologi yang Saya Gunakan</h2>
-                <p class="text-slate-400 mt-6 max-w-2xl mx-auto">
-                    Selama mengikuti MSIB, magang, dan mengembangkan
-                    berbagai project backend, saya menggunakan
-                    teknologi berikut.
+                <div class="mb-16 text-center sm:mb-20">
+                    <p class="section-label mb-3">Experience</p>
+                    <h2 class="text-3xl font-bold sm:text-5xl">Professional Journey</h2>
+                    <p class="mx-auto mt-5 max-w-2xl leading-7 text-slate-400">
+                        My experience in backend engineering, application development, and operational systems.
+                    </p>
+                </div>
+
+                <div class="space-y-7">
+
+                    <!-- Bank Sumsel Babel: current project -->
+                    <article class="experience-card rounded-3xl border border-slate-800 bg-slate-900/80 p-6 sm:p-10">
+                        <div class="flex flex-wrap items-start justify-between gap-5">
+                            <div>
+                                <p class="font-semibold text-blue-400">July 2026 – Present</p>
+                                <h3 class="mt-3 text-2xl font-bold sm:text-3xl">
+                                    Backend Developer
+                                </h3>
+                                <p class="mt-2 text-slate-400">
+                                    Bank Sumsel Babel · IT Division (TSI)
+                                </p>
+                            </div>
+                            <span class="rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-sm text-blue-300">
+                                Go · Backend Development
+                            </span>
+                        </div>
+
+                        <ul class="mt-7 space-y-3 leading-7 text-slate-300">
+                            <li class="flex gap-3">
+                                <span class="text-blue-400">▹</span>
+                                <span>Developing the Budaya PACAK evaluation and monitoring application to support the implementation of the corporate culture program within the HCL Division.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="text-blue-400">▹</span>
+                                <span>Building backend services and RESTful APIs for operational data management and monitoring workflows.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="text-blue-400">▹</span>
+                                <span>Implementing business logic, data validation, and database integration to support application requirements.</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- Bank Sumsel Babel: internship -->
+                    <article class="experience-card rounded-3xl border border-slate-800 bg-slate-900/80 p-6 sm:p-10">
+                        <div class="flex flex-wrap items-start justify-between gap-5">
+                            <div>
+                                <p class="font-semibold text-blue-400">July 2025 – July 2026</p>
+                                <h3 class="mt-3 text-2xl font-bold sm:text-3xl">
+                                    Backend Developer
+                                </h3>
+                                <p class="mt-2 text-slate-400">
+                                    Karya IT Internship Program · Bank Sumsel Babel
+                                </p>
+                            </div>
+                            <span class="rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-sm text-blue-300">
+                                Go · Python
+                            </span>
+                        </div>
+
+                        <ul class="mt-7 space-y-3 leading-7 text-slate-300">
+                            <li class="flex gap-3">
+                                <span class="text-blue-400">▹</span>
+                                <span>Developed a branch employee performance evaluation system covering customer service, tellers, security personnel, branch facilities, ATMs, and other operational aspects.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="text-blue-400">▹</span>
+                                <span>Developed back-office services for mobile banking, including user access management, approval and rejection workflows, customer registration support, and issue handling.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="text-blue-400">▹</span>
+                                <span>Built helpdesk data retrieval and processing workflows using Python and Celery for operational performance evaluation.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="text-blue-400">▹</span>
+                                <span>Worked with PostgreSQL, Redis, Docker, MinIO, Postman, and DBeaver in backend development and API testing.</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- Ruangguru -->
+                    <article class="experience-card rounded-3xl border border-slate-800 bg-slate-900/80 p-6 sm:p-10">
+                        <div class="flex flex-wrap items-start justify-between gap-5">
+                            <div>
+                                <p class="font-semibold text-blue-400">February 2023 – June 2023</p>
+                                <h3 class="mt-3 text-2xl font-bold sm:text-3xl">
+                                    Back-End Engineering 
+                                </h3>
+                                <p class="mt-2 text-slate-400">
+                                    Kampus Merdeka MSIB · PT Ruang Raya Indonesia (Ruangguru)
+                                </p>
+                            </div>
+                            <span class="rounded-full border border-slate-700 bg-slate-800 px-4 py-2 text-sm text-slate-300">
+                                Go · Backend Engineering
+                            </span>
+                        </div>
+
+                        <ul class="mt-7 space-y-3 leading-7 text-slate-300">
+                            <li class="flex gap-3">
+                                <span class="text-blue-400">▹</span>
+                                <span>Participated in a structured Back-End Engineering competency development program through Kampus Merdeka MSIB.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="text-blue-400">▹</span>
+                                <span>Developed backend skills in Go, API development, database management, and software engineering practices.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="text-blue-400">▹</span>
+                                <span>Completed technical learning activities and assignments in a collaborative development environment.</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- Perumda -->
+                    <article class="experience-card rounded-3xl border border-slate-800 bg-slate-900/80 p-6 sm:p-10">
+                        <div class="flex flex-wrap items-start justify-between gap-5">
+                            <div>
+                                <p class="font-semibold text-blue-400">September 2023 – January 2024</p>
+                                <h3 class="mt-3 text-2xl font-bold sm:text-3xl">
+                                    Intern
+                                </h3>
+                                <p class="mt-2 text-slate-400">
+                                    Corporate Secretariat · Perumda Tirta Musi Palembang
+                                </p>
+                            </div>
+                            <span class="rounded-full border border-slate-700 bg-slate-800 px-4 py-2 text-sm text-slate-300">
+                                Laravel · PHP
+                            </span>
+                        </div>
+
+                        <ul class="mt-7 space-y-3 leading-7 text-slate-300">
+                            <li class="flex gap-3">
+                                <span class="text-blue-400">▹</span>
+                                <span>Supported document administration, digitalization activities, and corporate secretariat operations.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="text-blue-400">▹</span>
+                                <span>Developed a Laravel-based electronic archive application as a final internship project to support digital document storage, organization, and retrieval.</span>
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="text-blue-400">▹</span>
+                                <span>Received a final internship evaluation score of 8.7 with an A (Excellent) rating.</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="border-y border-slate-900 bg-slate-900/30 py-24 sm:py-32">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+                <div class="mb-16 text-center sm:mb-20">
+                    <p class="section-label mb-3">Selected Projects</p>
+                    <h2 class="text-3xl font-bold sm:text-5xl">Projects I Have Worked On</h2>
+                    <p class="mx-auto mt-6 max-w-2xl leading-7 text-slate-400">
+                        Selected projects demonstrating my experience in backend engineering,
+                        API development, data processing, and operational systems.
+                    </p>
+                </div>
+
+                <div class="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+
+                    <!-- Project 1 -->
+                <article class="project-card overflow-hidden rounded-3xl border border-slate-800 bg-slate-900">
+                    <!-- Gambar kiri & kanan -->
+                    <div class="grid grid-cols-1 gap-3 border-b border-slate-800 bg-gradient-to-br from-slate-900 via-slate-950 to-cyan-950 p-4 sm:grid-cols-2 sm:p-5">
+                        <div class="overflow-hidden rounded-xl border border-slate-700 bg-slate-950 shadow-xl">
+                            <div class="flex items-center gap-1.5 border-b border-slate-800 bg-slate-900 px-3 py-2">
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                            </div>
+                            <div class="aspect-video overflow-hidden">
+                                <img src="assets/images/profile/BackOffice.jpeg"
+                                    alt="Mobile Banking Back-Office System screenshot 1"
+                                    class="project-image h-full w-full object-cover object-top"
+                                    loading="lazy">
+                            </div>
+                        </div>
+
+                        <div class="overflow-hidden rounded-xl border border-slate-700 bg-slate-950 shadow-xl">
+                            <div class="flex items-center gap-1.5 border-b border-slate-800 bg-slate-900 px-3 py-2">
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                            </div>
+                            <div class="aspect-video overflow-hidden">
+                                <img src="assets/images/profile/BackOfficee.jpeg"
+                                    alt="Mobile Banking Back-Office System screenshot 2"
+                                    class="project-image h-full w-full object-cover object-top"
+                                    loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Konten -->
+                    <div class="p-6 sm:p-8">
+                        <p class="text-xs font-semibold uppercase tracking-widest text-blue-400">
+                            Banking Application
+                        </p>
+                        <h3 class="mt-3 text-xl font-bold sm:text-2xl">
+                            Mobile Banking Back-Office System
+                        </h3>
+                        <p class="mt-4 text-sm leading-7 text-slate-400">
+                            Backend services supporting administrator and supervisor access,
+                            approval and rejection workflows, customer registration, and mobile
+                            banking issue handling.
+                        </p>
+
+                        <div class="mt-6 flex flex-wrap gap-2">
+                            <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">Go</span>
+                            <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">RESTful APIs</span>
+                            <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">PostgreSQL</span>
+                            <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">Redis</span>
+                            <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">Docker</span>
+                        </div>
+                    </div>
+                </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-card overflow-hidden rounded-3xl border border-slate-800 bg-slate-900">
+                        <!-- Gambar kiri & kanan -->
+                        <div class="grid grid-cols-1 gap-3 border-b border-slate-800 bg-gradient-to-br from-slate-900 via-slate-950 to-cyan-950 p-4 sm:grid-cols-2 sm:p-5">
+                            <div class="overflow-hidden rounded-xl border border-slate-700 bg-slate-950 shadow-xl">
+                                <div class="flex items-center gap-1.5 border-b border-slate-800 bg-slate-900 px-3 py-2">
+                                    <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                    <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                    <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                </div>
+                                <div class="aspect-video overflow-hidden">
+                                    <img src="assets/images/profile/helpdeskk.png"
+                                        alt="Helpdesk Performance Evaluation screenshot 1"
+                                        class="project-image h-full w-full object-cover object-top"
+                                        loading="lazy">
+                                </div>
+                            </div>
+
+                            <div class="overflow-hidden rounded-xl border border-slate-700 bg-slate-950 shadow-xl">
+                                <div class="flex items-center gap-1.5 border-b border-slate-800 bg-slate-900 px-3 py-2">
+                                    <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                    <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                    <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                </div>
+                                <div class="aspect-video overflow-hidden">
+                                    <img src="assets/images/profile/helpdesk.png"
+                                        alt="Helpdesk Performance Evaluation screenshot 2"
+                                        class="project-image h-full w-full object-cover object-top"
+                                        loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Konten -->
+                        <div class="p-6 sm:p-8">
+                            <p class="text-xs font-semibold uppercase tracking-widest text-blue-400">
+                                Monitoring System
+                            </p>
+                            <h3 class="mt-3 text-xl font-bold sm:text-2xl">
+                                Helpdesk Performance Evaluation
+                            </h3>
+                            <p class="mt-4 text-sm leading-7 text-slate-400">
+                                Developed helpdesk data retrieval and processing workflows to support
+                                performance evaluation and operational monitoring.
+                            </p>
+
+                            <div class="mt-6 flex flex-wrap gap-2">
+                                <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">Python</span>
+                                <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">Celery</span>
+                                <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">Data Processing</span>
+                                <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">Redis</span>
+                                <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">Docker</span>
+                                <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Project 3 -->
+                <article class="project-card overflow-hidden rounded-3xl border border-slate-800 bg-slate-900">
+                    <!-- Gambar 2x2 -->
+                    <div class="grid grid-cols-1 gap-3 border-b border-slate-800 bg-gradient-to-br from-slate-900 via-slate-950 to-cyan-950 p-4 sm:grid-cols-2 sm:p-5">
+                        <!-- Gambar 1 -->
+                        <div class="overflow-hidden rounded-xl border border-slate-700 bg-slate-950 shadow-xl">
+                            <div class="flex items-center gap-1.5 border-b border-slate-800 bg-slate-900 px-3 py-2">
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                            </div>
+                            <div class="aspect-video overflow-hidden">
+                                <img src="assets/images/profile/cakap1.png"
+                                    alt="Branch Employee Evaluation System screenshot 1"
+                                    class="project-image h-full w-full object-cover object-top"
+                                    loading="lazy">
+                            </div>
+                        </div>
+
+                        <!-- Gambar 2 -->
+                        <div class="overflow-hidden rounded-xl border border-slate-700 bg-slate-950 shadow-xl">
+                            <div class="flex items-center gap-1.5 border-b border-slate-800 bg-slate-900 px-3 py-2">
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                            </div>
+                            <div class="aspect-video overflow-hidden">
+                                <img src="assets/images/profile/cakap2.png"
+                                    alt="Branch Employee Evaluation System screenshot 2"
+                                    class="project-image h-full w-full object-cover object-top"
+                                    loading="lazy">
+                            </div>
+                        </div>
+
+                        <!-- Gambar 3 -->
+                        <div class="overflow-hidden rounded-xl border border-slate-700 bg-slate-950 shadow-xl">
+                            <div class="flex items-center gap-1.5 border-b border-slate-800 bg-slate-900 px-3 py-2">
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                            </div>
+                            <div class="aspect-video overflow-hidden">
+                                <img src="assets/images/profile/cakap3.jpeg"
+                                    alt="Branch Employee Evaluation System screenshot 3"
+                                    class="project-image h-full w-full object-cover object-top"
+                                    loading="lazy">
+                            </div>
+                        </div>
+
+                        <!-- Gambar 4 -->
+                        <div class="overflow-hidden rounded-xl border border-slate-700 bg-slate-950 shadow-xl">
+                            <div class="flex items-center gap-1.5 border-b border-slate-800 bg-slate-900 px-3 py-2">
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                            </div>
+                            <div class="aspect-video overflow-hidden">
+                                <img src="assets/images/profile/cakap4.png"
+                                    alt="Branch Employee Evaluation System screenshot 4"
+                                    class="project-image h-full w-full object-cover object-top"
+                                    loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Konten -->
+                    <div class="p-6 sm:p-8">
+                        <p class="text-xs font-semibold uppercase tracking-widest text-blue-400">
+                            Performance Evaluation
+                        </p>
+                        <h3 class="mt-3 text-xl font-bold sm:text-2xl">
+                            Branch Employee Evaluation System
+                        </h3>
+                        <p class="mt-4 text-sm leading-7 text-slate-400">
+                            Developed a system to support branch performance evaluation across
+                            customer service, facilities, security, ATMs, and other operational aspects.
+                        </p>
+
+                        <div class="mt-6 flex flex-wrap gap-2">
+                            <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">Python</span>
+                            <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">Redis</span>
+                            <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">Docker</span>
+                            <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">PostgreSQL</span>
+                        </div>
+                    </div>
+                </article>
+                    <!-- Project 4 -->
+                <article class="project-card overflow-hidden rounded-3xl border border-slate-800 bg-slate-900">
+                    <!-- Gambar kiri & kanan -->
+                    <div class="grid grid-cols-1 gap-3 border-b border-slate-800 bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950 p-4 sm:grid-cols-2 sm:p-5">
+                        <div class="overflow-hidden rounded-xl border border-slate-700 bg-slate-950 shadow-xl">
+                            <div class="flex items-center gap-1.5 border-b border-slate-800 bg-slate-900 px-3 py-2">
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                            </div>
+                            <div class="aspect-video overflow-hidden">
+                                <img src="assets/images/profile/budaya1.png"
+                                    alt="Budaya PACAK Back-Office screenshot 1"
+                                    class="project-image h-full w-full object-cover object-top"
+                                    loading="lazy">
+                            </div>
+                        </div>
+
+                        <div class="overflow-hidden rounded-xl border border-slate-700 bg-slate-950 shadow-xl">
+                            <div class="flex items-center gap-1.5 border-b border-slate-800 bg-slate-900 px-3 py-2">
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                                <span class="h-2 w-2 rounded-full bg-slate-600"></span>
+                            </div>
+                            <div class="aspect-video overflow-hidden">
+                                <img src="assets/images/profile/budaya2.png"
+                                    alt="Budaya PACAK Back-Office screenshot 2"
+                                    class="project-image h-full w-full object-cover object-top"
+                                    loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Konten -->
+                    <div class="p-6 sm:p-8">
+                        <p class="text-xs font-semibold uppercase tracking-widest text-blue-400">
+                            Internal Business Application
+                        </p>
+                        <h3 class="mt-3 text-xl font-bold sm:text-2xl">
+                            Budaya PACAK Back-Office &amp; Monitoring
+                        </h3>
+                        <p class="mt-4 text-sm leading-7 text-slate-400">
+                            Developing backend services for work unit management, periods,
+                            holidays, activity targets, agendas, approval workflows, and monitoring.
+                        </p>
+
+                        <div class="mt-6 flex flex-wrap gap-2">
+                            <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">Go</span>
+                            <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">Python</span>
+                            <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">PostgreSQL</span>
+                            <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">Redis</span>
+                            <span class="rounded-full bg-blue-500/10 px-3 py-1.5 text-xs text-blue-300">MinIO</span>
+                        </div>
+                    </div>
+                </article>
+                </div>
+
+                <p class="mx-auto mt-8 max-w-3xl text-center text-xs leading-6 text-slate-500">
+                    Some project visuals above are illustrative placeholders. Replace them with actual
+                    screenshots of your applications before publishing your portfolio.
                 </p>
             </div>
+        </section>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-blue-500 hover:-translate-y-2 transition duration-300">
-                    <div class="text-5xl mb-6">🐹</div>
-                    <h3 class="text-2xl font-bold">Go</h3>
-                    <p class="text-slate-400 mt-4">Bahasa utama yang saya gunakan untuk membangun REST API dan backend system.</p>
+        <!-- Education -->
+        <section id="education" class="py-24 sm:py-28">
+            <div class="mx-auto max-w-5xl px-6 lg:px-8">
+                <div class="mb-12 text-center">
+                    <p class="section-label mb-3">Education</p>
+                    <h2 class="text-3xl font-bold sm:text-5xl">Academic Background</h2>
                 </div>
 
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-blue-500 hover:-translate-y-2 transition duration-300">
-                    <div class="text-5xl mb-6">🐳</div>
-                    <h3 class="text-2xl font-bold">Docker</h3>
-                    <p class="text-slate-400 mt-4">Digunakan untuk containerization selama proses development.</p>
-                </div>
-
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-blue-500 hover:-translate-y-2 transition duration-300">
-                    <div class="text-5xl mb-6">🐰</div>
-                    <h3 class="text-2xl font-bold">RabbitMQ</h3>
-                    <p class="text-slate-400 mt-4">Message Broker untuk komunikasi asynchronous.</p>
-                </div>
-
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-blue-500 hover:-translate-y-2 transition duration-300">
-                    <div class="text-5xl mb-6">🗄️</div>
-                    <h3 class="text-2xl font-bold">PostgreSQL</h3>
-                    <p class="text-slate-400 mt-4">Database relasional untuk aplikasi backend.</p>
-                </div>
-
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-blue-500 hover:-translate-y-2 transition duration-300">
-                    <div class="text-5xl mb-6">⚡</div>
-                    <h3 class="text-2xl font-bold">Redis</h3>
-                    <p class="text-slate-400 mt-4">Digunakan sebagai cache untuk meningkatkan performa aplikasi.</p>
-                </div>
-
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-blue-500 hover:-translate-y-2 transition duration-300">
-                    <div class="text-5xl mb-6">📦</div>
-                    <h3 class="text-2xl font-bold">MinIO</h3>
-                    <p class="text-slate-400 mt-4">Object Storage untuk menyimpan file dan dokumen.</p>
-                </div>
-
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-blue-500 hover:-translate-y-2 transition duration-300">
-                    <div class="text-5xl mb-6">🐍</div>
-                    <h3 class="text-2xl font-bold">Python</h3>
-                    <p class="text-slate-400 mt-4">Digunakan untuk Dashboard Monitoring Helpdesk.</p>
-                </div>
-
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-blue-500 hover:-translate-y-2 transition duration-300">
-                    <div class="text-5xl mb-6">📮</div>
-                    <h3 class="text-2xl font-bold">Postman</h3>
-                    <p class="text-slate-400 mt-4">API Testing dan dokumentasi endpoint.</p>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-    <section id="experience" class="py-32">
-        <div class="max-w-6xl mx-auto px-8">
-
-            <div class="text-center mb-20">
-                <p class="text-blue-400 font-semibold mb-3">Experience</p>
-                <h2 class="text-5xl font-bold">Perjalanan Karier</h2>
-                <p class="text-slate-400 mt-5">Pengalaman belajar, magang, dan mengembangkan sistem backend.</p>
-            </div>
-
-            <div class="space-y-8">
-
-                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-10 hover:border-blue-500 transition">
-                    <div class="flex justify-between items-start flex-wrap gap-6">
+                <div class="rounded-3xl border border-slate-800 bg-slate-900/80 p-6 sm:p-10">
+                    <div class="flex flex-col justify-between gap-5 sm:flex-row sm:items-start">
                         <div>
-                            <span class="text-blue-400 font-semibold">Juli 2025 - Sekarang</span>
-                            <h3 class="text-3xl font-bold mt-3">Backend Developer</h3>
-                            <p class="text-slate-400 mt-2">Magang Karya • Bank Sumsel Babel</p>
+                            <p class="text-sm font-semibold text-blue-400">2020–2024</p>
+                            <h3 class="mt-3 text-2xl font-bold">
+                                Diploma IV in Informatics Management
+                            </h3>
+                            <p class="mt-2 text-slate-400">Politeknik Negeri Sriwijaya</p>
+                            <p class="mt-4 text-slate-300">GPA: 3.70/4.00</p>
                         </div>
-                        <span class="bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full">Go (Golang)</span>
+                        <div class="rounded-xl border border-blue-500/20 bg-blue-500/10 px-4 py-3 text-sm text-blue-300">
+                            Bachelor's-level Applied Degree
+                        </div>
                     </div>
-                    <ul class="mt-8 space-y-3 text-slate-300">
-                        <li>✅ Mengembangkan Backoffice Mobile Banking.</li>
-                        <li>✅ Membuat Dashboard Monitoring Helpdesk menggunakan Python.</li>
-                        <li>✅ Mengembangkan Sistem Penilaian Kinerja Cabang.</li>
-                        <li>✅ Mengembangkan aplikasi Job Report Mingguan.</li>
-                        <li>✅ Integrasi Redis, RabbitMQ, MinIO, PostgreSQL, Docker.</li>
-                    </ul>
+
+                    <div class="mt-8 border-t border-slate-800 pt-7">
+                        <h4 class="font-bold text-slate-200">Final Project</h4>
+                        <p class="mt-3 leading-7 text-slate-400">
+                            Developed a Laravel-based application for managing and distributing
+                            job vacancy information at the Department of Manpower, helping connect
+                            job seekers with companies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates -->
+        <section id="certificates" class="border-y border-slate-900 bg-slate-900/30 py-24 sm:py-32">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+                <div class="mb-16 text-center sm:mb-20">
+                    <p class="section-label mb-3">Credentials</p>
+                    <h2 class="text-3xl font-bold sm:text-5xl">Certificates & Achievements</h2>
+                    <p class="mx-auto mt-6 max-w-2xl leading-7 text-slate-400">
+                        Professional training, internship experience, and achievements throughout my development journey.
+                    </p>
                 </div>
 
-                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-10 hover:border-blue-500 transition">
-                    <span class="text-blue-400 font-semibold">Februari 2023 - Juni 2023</span>
-                    <h3 class="text-3xl font-bold mt-3">Backend Engineering</h3>
-                    <p class="text-slate-400 mt-2">Studi Independen • PT Ruang Raya Indonesia (Ruangguru)</p>
-                    <ul class="mt-8 space-y-3 text-slate-300">
-                        <li>✅ General Competencies</li>
-                        <li>✅ Software Engineering</li>
-                        <li>✅ HTML & CSS</li>
-                        <li>✅ Backend Development menggunakan Go</li>
-                        <li>✅ Database Management</li>
-                    </ul>
+                <div class="grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
+
+                    <article class="certificate-card overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+                        <div class="flex h-56 items-center justify-center overflow-hidden border-b border-slate-800 bg-slate-950">
+                            <img src="assets/images/profile/sertifikasi.png"
+                                 alt="Entry-Level Web Programmer certificate"
+                                 class="certificate-image"
+                                 loading="lazy">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-bold text-blue-400">Entry-Level Web Programmer</h3>
+                            <p class="mt-3 text-sm leading-6 text-slate-400">
+                                LSP Politeknik Negeri Sriwijaya
+                            </p>
+                            <p class="mt-2 text-xs text-slate-500">2024–2027</p>
+                            <a href="assets/images/certificates/sertifikasi.pdf"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="mt-5 inline-flex text-sm font-semibold text-blue-400 transition hover:text-cyan-300">
+                                View Certificate ↗
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="certificate-card overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+                        <div class="flex h-56 items-center justify-center overflow-hidden border-b border-slate-800 bg-slate-950">
+                            <img src="assets/images/profile/msib.png"
+                                 alt="MSIB Back-End Engineering certificate"
+                                 class="certificate-image"
+                                 loading="lazy">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-bold text-blue-400">Back-End Engineering – MSIB Batch 4</h3>
+                            <p class="mt-3 text-sm leading-6 text-slate-400">
+                                Ruangguru Camp · PT Ruang Raya Indonesia
+                            </p>
+                            <p class="mt-2 text-xs text-slate-500">2023</p>
+                            <a href="assets/images/certificates/Sertifikat%20MSIB%20x%20RGCAMP%20Batch%204.pdf"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="mt-5 inline-flex text-sm font-semibold text-blue-400 transition hover:text-cyan-300">
+                                View Certificate ↗
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="certificate-card overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+                        <div class="flex h-56 items-center justify-center overflow-hidden border-b border-slate-800 bg-slate-950">
+                            <img src="assets/images/profile/Perumda.png"
+                                 alt="Perumda Tirta Musi internship certificate"
+                                 class="certificate-image"
+                                 loading="lazy">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-bold text-blue-400">Corporate Secretariat Internship</h3>
+                            <p class="mt-3 text-sm leading-6 text-slate-400">
+                                Perumda Tirta Musi Palembang
+                            </p>
+                            <p class="mt-2 text-xs text-slate-500">2023–2024</p>
+                            <a href="assets/images/certificates/Perumda.pdf"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="mt-5 inline-flex text-sm font-semibold text-blue-400 transition hover:text-cyan-300">
+                                View Certificate ↗
+                            </a>
+                        </div>
+                    </article>
+                    <article class="certificate-card overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+                        <div class="flex h-56 items-center justify-center overflow-hidden border-b border-slate-800 bg-slate-950">
+                            <img src="assets/images/profile/java.png"
+                                 alt="Perumda Tirta Musi internship certificate"
+                                 class="certificate-image"
+                                 loading="lazy">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-bold text-blue-400"> Java Programming – Private Course</h3>
+                            <p class="mt-3 text-sm leading-6 text-slate-400">
+                                Completed Java programming training to strengthen programming fundamentals.
+                            </p>
+                            <p class="mt-2 text-xs text-slate-500">2023–2024</p>
+                            <a href="assets/images/certificates/java.pdf"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="mt-5 inline-flex text-sm font-semibold text-blue-400 transition hover:text-cyan-300">
+                                View Certificate ↗
+                            </a>
+                        </div>
+                    </article>
+                    <article class="certificate-card overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+                        <div class="flex h-56 items-center justify-center overflow-hidden border-b border-slate-800 bg-slate-950">
+                            <img src="assets/images/profile/Danus.png"
+                                 alt="KARISMA student organization certificate"
+                                 class="certificate-image"
+                                 loading="lazy">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-bold text-blue-400">Entrepreneurship Division Member</h3>
+                            <p class="mt-3 text-sm leading-6 text-slate-400">
+                                UKM KARISMA · Politeknik Negeri Sriwijaya
+                            </p>
+                            <p class="mt-2 text-xs text-slate-500">Student Organization</p>
+                        </div>
+                    </article>
+
                 </div>
 
-                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-10 hover:border-blue-500 transition">
-                    <span class="text-blue-400 font-semibold">September 2023 - Januari 2024</span>
-                    <h3 class="text-3xl font-bold mt-3">Intern</h3>
-                    <p class="text-slate-400 mt-2">Perumda Tirta Musi Palembang</p>
-                    <ul class="mt-8 space-y-3 text-slate-300">
-                        <li>✅ Membantu administrasi dan digitalisasi dokumen.</li>
-                        <li>✅ Mendukung kegiatan operasional bagian Sekretariat Perusahaan.</li>
-                    </ul>
+                <!-- Additional achievements -->
+                <div class="mt-8 rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
+                    <div class="flex items-start gap-4">
+                        <div class="rounded-xl bg-blue-500/10 p-3 text-2xl" aria-hidden="true">🏅</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-blue-400">
+                                Academic Achievement Scholarship
+                            </h3>
+                            <p class="mt-2 text-slate-300">
+                                Penukal Abab Lematang Ilir (PALI) Regency
+                            </p>
+                            <p class="mt-2 text-sm leading-6 text-slate-400">
+                                Recipient of an academic achievement scholarship awarded by PALI Regency in 2024.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
             </div>
+        </section>
 
-        </div>
-    </section>
-    <section id="projects" class="py-32">
-        <div class="max-w-7xl mx-auto px-8">
+        <!-- Contact -->
+        <section id="contact" class="py-24 sm:py-32">
+            <div class="mx-auto max-w-4xl px-6 text-center lg:px-8">
 
-            <div class="text-center mb-20">
-                <p class="text-blue-400 font-semibold">Featured Projects</p>
-                <h2 class="text-5xl font-bold mt-3">Project yang Pernah Saya Kerjakan</h2>
-                <p class="text-slate-400 mt-6">
-                    Beberapa project backend yang saya kerjakan selama mengikuti program magang dan pengembangan sistem.
+                <p class="section-label mb-3">Contact</p>
+                <h2 class="text-3xl font-bold sm:text-5xl">Let's Connect</h2>
+
+                <p class="mx-auto mt-6 max-w-2xl leading-8 text-slate-400">
+                    I am open to professional opportunities, backend development roles,
+                    and collaborative projects. Feel free to reach out.
                 </p>
-            </div>
 
-            <div class="grid lg:grid-cols-2 gap-10">
-                <div class="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden hover:border-blue-500 transition hover:-translate-y-2 duration-300">
-                    <div class="h-56 bg-slate-800 flex items-center justify-center">
-                        <img
-                            src="assets/images/profile/BackOffice.jpeg"
-                            alt="Back Office"
-                            class="max-w-full max-h-full object-contain"
-                        />
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-3xl font-bold">Backoffice Mobile Banking</h3>
-                        <p class="text-slate-400 mt-5 leading-8">
-                            Prototype aplikasi Backoffice Mobile Banking
-                            untuk mendukung operasional internal
-                            Bank Sumsel Babel.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mt-8">
-                            <span class="bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full">Go</span>
-                            <span class="bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full">PostgreSQL</span>
-                            <span class="bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full">Docker</span>
-                            <span class="bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full">Redis</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden hover:border-blue-500 transition hover:-translate-y-2 duration-300">
-                    <div class="h-56 bg-slate-800 flex items-center justify-center">
-                        <span class="text-slate-500">Screenshot Project</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-3xl font-bold">Dashboard Monitoring Helpdesk</h3>
-                        <p class="text-slate-400 mt-5 leading-8">
-                            Dashboard untuk memonitor kinerja tim helpdesk
-                            secara real-time, dibangun menggunakan Python
-                            dengan visualisasi data interaktif.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mt-8">
-                            <span class="bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full">Python</span>
-                            <span class="bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full">Dashboard</span>
-                            <span class="bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full">Data Visualization</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden hover:border-blue-500 transition hover:-translate-y-2 duration-300">
-                    <div class="h-56 bg-slate-800 flex items-center justify-center">
-                        <span class="text-slate-500">Screenshot Project</span>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-3xl font-bold">Sistem Penilaian Kinerja Cabang</h3>
-                        <p class="text-slate-400 mt-5 leading-8">
-                            REST API untuk mengelola dan menghitung
-                            penilaian kinerja cabang Bank Sumsel Babel
-                            secara otomatis dan terpusat.
-                        </p>
-                        <div class="flex flex-wrap gap-3 mt-8">
-                            <span class="bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full">Go</span>
-                            <span class="bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full">REST API</span>
-                            <span class="bg-blue-500/10 text-blue-400 px-4 py-2 rounded-full">PostgreSQL</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-<section id="certificates" class="py-32">
-    <div class="max-w-7xl mx-auto px-8">
-
-        <div class="text-center mb-20">
-            <p class="text-blue-400 font-semibold mb-3">Certificates</p>
-            <h2 class="text-5xl font-bold">Sertifikat Kompetensi</h2>
-            <p class="text-slate-400 mt-6 max-w-2xl mx-auto">
-                Sertifikat yang saya peroleh selama menempuh pendidikan dan mengikuti program MSIB.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500 transition">
-                <div class="h-56 bg-slate-800">
-                    <img src="assets/images/profile/sertifikasi.png"
-                         alt="Sertifikat Kompetensi Pemrogram Web Pratama"
-                         class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-blue-400">Pemrogram Web Pratama</h3>
-                    <p class="text-slate-400 mt-2">LSP Politeknik Negeri Sriwijaya • Web Programming</p>
-                    <a href="assets/images/certificates/sertifikasi.pdf" target="_blank"
-                       class="inline-block mt-4 text-blue-400 hover:underline">
-                        Lihat Sertifikat →
+                <div class="mt-9 flex flex-wrap justify-center gap-4">
+                    <a href="mailto:judarnak@gmail.com"
+                       class="inline-flex items-center gap-2 rounded-xl bg-blue-500 px-6 py-3 font-semibold transition hover:bg-blue-600">
+                        <span aria-hidden="true">✉</span>
+                        Email Me
                     </a>
-                </div>
-            </div>
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500 transition">
-                <div class="h-56 bg-slate-800">
-                    <img src="assets/images/profile/msib.png"
-                         alt="Sertifikat MSIB Ruangguru Camp Batch 4"
-                         class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-blue-400">MSIB Angkatan 4 — Backend Engineering</h3>
-                    <p class="text-slate-400 mt-2">Ruangguru Camp x Kampus Merdeka • PT Ruang Raya Indonesia</p>
-                    <a href="assets/images/certificates/Sertifikat MSIB x RGCAMP Batch 4.pdf" target="_blank"
-                       class="inline-block mt-4 text-blue-400 hover:underline">
-                        Lihat Sertifikat →
-                    </a>
-                </div>
-            </div>
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500 transition">
-                <div class="h-56 bg-slate-800">
-                    <img src="assets/images/profile/Perumda.png"
-                        alt="Sertifikat Magang Perumda Tirta Musi"
-                        class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-blue-400">Magang — Sekretariat Perusahaan</h3>
-                    <p class="text-slate-400 mt-2">Perumda Tirta Musi Palembang</p>
-                    <a href="assets/images/certificates/Perumda.pdf" target="_blank"
-                    class="inline-block mt-4 text-blue-400 hover:underline">
-                        Lihat Sertifikat →
-                    </a>
-                </div>
-            </div>
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500 transition">
-                <div class="h-56 bg-slate-800">
-                    <img src="assets/images/profile/Danus.png"
-                        alt="Sertifikat Anggota Bidang Dana Usaha UKM KARISMA Polsri"
-                        class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-blue-400">Anggota Bidang Dana Usaha (DANUS)</h3>
-                    <p class="text-slate-400 mt-2">UKM KARISMA Polsri</p>
-                </div>
-            </div>
 
-        </div>
+                    <!-- Add your actual profile URLs before enabling these links. -->
+                    <!--
+                    <a href="YOUR_GITHUB_URL"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="rounded-xl border border-slate-700 px-6 py-3 font-semibold transition hover:border-blue-500 hover:text-blue-400">
+                        GitHub
+                    </a>
 
-    </div>
-</section>
-    <section id="contact" class="py-32">
-        <div class="max-w-4xl mx-auto px-8 text-center">
-            <p class="text-blue-400 font-semibold mb-3">Contact</p>
-            <h2 class="text-5xl font-bold">Hubungi Saya</h2>
-            <p class="text-slate-400 mt-6">
-                Terbuka untuk peluang kerja maupun kolaborasi. Jangan ragu untuk menghubungi saya.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4 mt-10">
-                <a href="mailto:judarnak@gmail.com" class="bg-blue-500 hover:bg-blue-600 transition px-6 py-3 rounded-xl font-semibold">
-                    Email Saya
-                </a>
-                <!-- <a href="#" class="border border-slate-700 hover:border-blue-500 hover:text-blue-400 transition px-6 py-3 rounded-xl">
-                    LinkedIn
-                </a>
-                <a href="#" class="border border-slate-700 hover:border-blue-500 hover:text-blue-400 transition px-6 py-3 rounded-xl">
-                    GitHub
-                </a> -->
+                    <a href="YOUR_LINKEDIN_URL"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="rounded-xl border border-slate-700 px-6 py-3 font-semibold transition hover:border-blue-500 hover:text-blue-400">
+                        LinkedIn
+                    </a>
+                    -->
+                </div>
+
+                <div class="mt-16 border-t border-slate-800 pt-8">
+                    <a href="#home" class="text-lg font-extrabold text-blue-400">
+                        &lt;/&gt; Judarna.
+                    </a>
+                    <p class="mt-3 text-sm text-slate-500">
+                        Backend Developer · Go · Python · RESTful APIs
+                    </p>
+                    <p class="mt-5 text-xs text-slate-600">
+                        © <span id="current-year">2026</span> Judarna Khoirunnisa Anjalina. All rights reserved.
+                    </p>
+                </div>
+
             </div>
-        </div>
-    </section>
+        </section>
+
+    </main>
 
     <script src="./assets/js/script.js"></script>
-</body>
 
+    <script>
+        // Mobile navigation
+        const menuButton = document.getElementById("menu-button");
+        const mobileNavigation = document.getElementById("mobile-navigation");
+
+        if (menuButton && mobileNavigation) {
+            menuButton.addEventListener("click", function () {
+                const isOpen = mobileNavigation.classList.toggle("open");
+                menuButton.setAttribute("aria-expanded", String(isOpen));
+            });
+
+            mobileNavigation.querySelectorAll("a").forEach(function (link) {
+                link.addEventListener("click", function () {
+                    mobileNavigation.classList.remove("open");
+                    menuButton.setAttribute("aria-expanded", "false");
+                });
+            });
+
+            document.addEventListener("click", function (event) {
+                if (
+                    !menuButton.contains(event.target) &&
+                    !mobileNavigation.contains(event.target)
+                ) {
+                    mobileNavigation.classList.remove("open");
+                    menuButton.setAttribute("aria-expanded", "false");
+                }
+            });
+        }
+
+        // Automatically update the footer year
+        const yearElement = document.getElementById("current-year");
+
+        if (yearElement) {
+            yearElement.textContent = new Date().getFullYear();
+        }
+    </script>
+
+</body>
 </html>
